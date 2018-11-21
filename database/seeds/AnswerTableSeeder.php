@@ -11,7 +11,8 @@ class AnswerTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = App\User::inRandomOrder();{
+        $users = App\User::inRandomOrder();
+        {
             $users->each(function ($user) {
                 $question = App\Question::inRandomOrder()->first();
                 $answer = factory(\App\Answer::class)->make();
