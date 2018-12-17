@@ -1,8 +1,12 @@
 # faq
 
-To run the FAQ project:
+Epic story: Feature is to notify registered user when the question they posted gets answered or when answer is edited
 
-1.git clone - https://github.com/dhawalshah11/faq.git
-2. CD into FAQ and run composer install 
-3. cp .env.example to .env
-4. setup database / with sqlite or other (https://laravel.com/docs/5.6/database)
+User Stories:
+
+    Registered users post a question. They will get email notification every time someone answers their question.
+    Users will get notified when someone updates the answers posted on their question.
+    Notification mail will get button redirecting user to that specific question (might ask for login).
+    Email generation can be managed by sendgrid account.
+
+link for the project: https://dj-finalproject.herokuapp.com/
