@@ -7,7 +7,7 @@ use App\Notifications\answernoti;
 use App\Notifications\Updatenoti;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class AnswerController extends Controller

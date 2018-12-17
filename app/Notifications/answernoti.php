@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Http\Request;
+use App\User;
 
 class answernoti extends Notification
 {
@@ -47,7 +48,8 @@ class answernoti extends Notification
         return (new MailMessage)
             ->line('You have new answer')
             ->action('Take a watch', \route('questions.show', $Stringway[1]))
-            ->line('Keep answering!');
+            ->line('Keep answering
+            !');
     }
 
     /**
