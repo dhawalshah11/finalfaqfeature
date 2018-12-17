@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Notifications\answernoti;
+use App\Notifications\Updatenoti;
 use App\Question;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,7 +56,8 @@ class AnswerController extends Controller
         $Answer->user()->associate(Auth::user());
         $Answer->question()->associate($question);
         $Answer->save();
-
+        $Useranswernoti = User::find($question->id);
+        $Useranswernoti->notify(new answernoti());
         return redirect()->route('questions.show',['question_id' => $question->id])->with('message', 'Saved');
     }
 
@@ -106,7 +109,8 @@ class AnswerController extends Controller
         $answer = Answer::find($answer);
         $answer->body = $request->body;
         $answer->save();
-
+        $NotifyUpdatenoti = User::find($question);
+        $NotifyUpdatenoti->notify(new Updatenoti());
         return redirect()->route('answers.show',['question_id' => $question, 'answer_id' => $answer])->with('message', 'Updated');
 
     }
