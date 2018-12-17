@@ -2,10 +2,14 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class Updatenoti extends Notification
 {
@@ -40,10 +44,13 @@ class Updatenoti extends Notification
      */
     public function toMail($notifiable)
     {
+        $UpdateAnswerRequest = Request::capture();
+        $UpdateaskPath = $UpdateAnswerRequest->path();
+        $StringwayUpdate = explode("/", $UpdateaskPath);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('A solution to your inquiry is refreshed')
+            ->action('See', \route('questions.show', $StringwayUpdate[1]))
+            ->line('Keep answering!');
     }
 
     /**
